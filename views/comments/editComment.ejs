@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create New Comment</title>
+</head>
+
+<body>
+    <!-- HTML form inputs don't support patches or deletes etc. using method override via query ?_method=PATCH to treat it as a Patch despite post request -->
+    <form action=<%=`/comments/${id}?_method=PATCH`%> method="post">
+        <section>
+            <h1>Username: <%= username %>
+            </h1>
+        </section>
+        <section>
+            <label for="comment">Comment Text:</label><br>
+            <textarea id="comment" type="text" name="comment" cols="36" rows="5"><%=comment %></textarea>
+        </section>
+        <button type="submit"> Submit</button>
+    </form>
+    <a href="/comments">Back</a>
+</body>
+
+</html>
