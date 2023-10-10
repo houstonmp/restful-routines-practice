@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const { v4: uuidv4 } = require('uuid');
 const path = require('path')
 
 app.set('views', path.join(__dirname, 'views'))
@@ -39,7 +40,7 @@ app.get('/comments/new', (req, res) => {
 
 app.post('/comments', (req, res) => {
     const { username, comment } = req.body;
-    comments.push({ username, comment, id: Math.floor(Math.random() * 1000000) + 1 })
+    comments.push({ username, comment, id: uuidv4() });
     res.redirect('/comments');
 })
 
