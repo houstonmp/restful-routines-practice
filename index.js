@@ -14,7 +14,7 @@ app.use(express.json()); //For parsing json data
 // Query word to look for in the form client
 app.use(methodOverride('_method'));
 
-const comments = [
+let comments = [
     {
         id: 'ced7d1a4-49d2-4464-9829-5b8619096e92',
         username: 'Todd',
@@ -61,6 +61,12 @@ app.patch('/comments/:id', (req, res) => {
     const foundComment = comments.find(el => el.id === id);
     foundComment.comment = newCommentText;
     console.log("Patching:", foundComment, newCommentText)
+    res.redirect('/comments')
+})
+
+app.delete('/comments/:id', (req, res) => {
+    const { id } = req.params;
+    comments = comments.filter(el => el.id !== id);
     res.redirect('/comments')
 })
 
