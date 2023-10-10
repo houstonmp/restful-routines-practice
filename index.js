@@ -9,18 +9,22 @@ app.use(express.json()); //For parsing json data
 
 const comments = [
     {
+        id: 'id1',
         username: 'Todd',
         comment: 'lol that is so funny'
     },
     {
+        id: 'id2',
         username: 'Skyler',
         comment: 'I like to go birdwatching with my dog'
     },
     {
+        id: 'id3',
         username: 'Sk8terBoi',
         comment: 'Please delete your account, Todd'
     },
     {
+        id: 'id4',
         username: 'onlysayswoof',
         comment: 'woof woof woof'
     },
@@ -35,8 +39,14 @@ app.get('/comments/new', (req, res) => {
 
 app.post('/comments', (req, res) => {
     const { username, comment } = req.body;
-    comments.push({ username, comment })
+    comments.push({ username, comment, id: Math.floor(Math.random() * 1000000) + 1 })
     res.redirect('/comments');
+})
+
+app.get('/comments/:id', (req, res) => {
+    const { id } = req.params;
+    const comment = comments.find(el => el.id == id)
+    res.render('comments/show', { ...comment })
 })
 
 app.listen(3000, () => {
