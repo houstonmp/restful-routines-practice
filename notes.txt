@@ -1,0 +1,33 @@
+username
+text
+bob - hello!
+
+!Optional styling, create new endpoint for each of these items
+GET /allcomments
+GET /all
+GET /showmeallcommentsnow
+
+POST /newcomment
+POST /makecomment
+
+!Important to create REST compliant request. endpoint is the same for each request
+GET             /comments - list of all comments (Index route)
+POST            /comments - create a new comment (Create route)
+
+GET             /comments/:id - Get one comment (using ID) (Show route)
+PUT || PATCH    /comments/:id - Update one comment (Update route)
+DELETE          /comments/:id - Destroy one comment (Delete or Destroy Router)
+
+CRUD - Create, Read, Update, Delete
+
+An Example:
+Using Comments as a resource
+
+NAME        PATH                VERB        PURPOSE
+Index       /comments           GET         Display all comments
+New         /comments/new       GET         Form to create new comment
+Create      /comments           POST        Creates new comment on server
+Show        /comments/:id       GET         Details for one specific comment
+Edit        /comments/:id/edit  GET         Form to edit specific comment  
+Update      /comments/:id       PATCH       Updates specific comment on server
+Destroy     /comments/:id       DELETE      Deletes specific item on server
