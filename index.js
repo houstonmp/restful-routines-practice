@@ -36,8 +36,13 @@ app.get('/comments/new', (req, res) => {
 app.post('/comments', (req, res) => {
     const { username, comment } = req.body;
     comments.push({ username, comment })
-    res.render('comments/index', { comments });
+    res.redirect('/comments');
 })
+
+app.listen(3000, () => {
+    console.log("On port 3000")
+})
+
 
 // app.get('/', (req, res) => {
 //     res.render("index.ejs");
@@ -52,7 +57,3 @@ app.post('/comments', (req, res) => {
 //     const { meat, qty } = req.body;
 //     res.send(`Ok! Here are your ${qty} ${meat} tacos`)
 // })
-
-app.listen(3000, () => {
-    console.log("On port 3000")
-})
